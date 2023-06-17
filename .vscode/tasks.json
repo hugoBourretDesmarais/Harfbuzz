@@ -4,7 +4,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ main.cpp -I harfbuzz/src -I /opt/homebrew/Cellar/freetype/2.13.0_1/include/freetype2 -I /opt/homebrew/Cellar/cairo/1.16.0_5/include/cairo -L harfbuzz/build/src -L /opt/homebrew/Cellar/freetype/2.13.0_1/lib -L /opt/homebrew/Cellar/cairo/1.16.0_5/lib -lharfbuzz -lfreetype -lcairo -o main",
+            "command": "g++ -std=c++20 main.cpp FontHandler.cpp Renderer.cpp -I harfbuzz/src -I /opt/homebrew/Cellar/freetype/2.13.0_1/include/freetype2 -L harfbuzz/build/src -L /opt/homebrew/Cellar/freetype/2.13.0_1/lib -lharfbuzz -lfreetype -o main",
             "group": {
                 "kind": "build",
                 "isDefault": true
