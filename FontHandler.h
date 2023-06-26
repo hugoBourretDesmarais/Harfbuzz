@@ -7,10 +7,11 @@
 
 class FontHandler {
 public:
-    int shape(const char* text);
-    int initFont(const char* fontfile);
+    int shape(const char* text, const bool debug);
+    int initFont(const char* fontfile, const bool overrideXAdvance);
     void destroyFont();
     std::vector<FT_Bitmap*> getGlyphs();
+    void enableFeatures(const std::vector<std::string>& featuresStr);
     
 private:
     static hb_position_t my_h_advance_func(hb_font_t *font, void *font_data,
@@ -25,6 +26,8 @@ private:
 
     std::vector<hb_glyph_info_t> glyphs_info;
     std::vector<FT_Bitmap*> glyphs_bitmaps;
+
+    std::vector<hb_feature_t> features;
 };
 
 #endif

@@ -1,43 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "FontHandler.h"
-#include "Renderer.h"
-
-#include <hb.h>
-#include <hb-ft.h>
-
-#include <ft2build.h>
-
-#define WIDTH 256
-#define HEIGHT 256
-
+#include "TextShapingPerformanceTester.h"
 
 int main()
 {
-    const char* fontfile = "Resources/Roboto-Bold.ttf";
-    const char* text = "ffi.";
+    char* fontFile = "Resources/Roboto-Bold.ttf";
+
+    // PERFORMANCE TESTS
+//    TextShapingPerformanceTester tester(fontFile);
+
+    ////tester.shapeSameString(100, "ffi");
+    ////tester.runRandomStringTests(1, 100);
+    //tester.runRandomStringOnlyShapingTests(10, 200);
+
+    //printf("Average time taken: %.10lf milliseconds\n", tester.getAverageTime());
+    //printf("Minimum time taken: %.10lf milliseconds\n", tester.getMinTime());
+    //printf("Maximum time taken: %.10lf milliseconds\n", tester.getMaxTime());
+    //printf("Median time taken: %.10lf milliseconds\n", tester.getMedianTime());
+
+    //tester.printAllTimings();
+
+    // Example using FT, HB, and Renderer
 
     FontHandler fh;
-  
-    // Initialize the font
-    if (fh.initFont(fontfile)) {
-        return 1;
-    }
+    fh.initFont(fontFile, false);
+    fh.shape("ffi.", true);
 
-    // Shape the text
-    if (fh.shape(text)) {
-        return 1;
-    }
-
-    // Render the glyphs
-    std::vector<FT_Bitmap*> glyphs = fh.getGlyphs();
     Renderer renderer;
+    renderer.render_glyphs(fh.getGlyphs());
 
-    renderer.render_glyphs(glyphs);
-
-    // Cleanup
     fh.destroyFont();
+
+    return 0;
 }
 
 

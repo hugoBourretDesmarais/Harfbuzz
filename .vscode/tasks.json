@@ -4,7 +4,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "g++ -std=c++20 main.cpp FontHandler.cpp Renderer.cpp -I harfbuzz/src -I /opt/homebrew/Cellar/freetype/2.13.0_1/include/freetype2 -L harfbuzz/build/src -L /opt/homebrew/Cellar/freetype/2.13.0_1/lib -lharfbuzz -lfreetype -o main",
+            "command": "clang++ -O3 -std=c++20 main.cpp TextShapingPerformanceTester.cpp FontHandler.cpp Renderer.cpp -I harfbuzz/src -I /opt/homebrew/Cellar/freetype/2.13.0_1/include/freetype2 -L harfbuzz/build/src -L /opt/homebrew/Cellar/freetype/2.13.0_1/lib -lharfbuzz -lfreetype -o main",
             "group": {
                 "kind": "build",
                 "isDefault": true
