@@ -5,3 +5,7 @@
 
 # Ignore executable files
 /main
+
+# Others
+glfw-3.3.8.bin.MACOS/
+glew-2.1.0/
